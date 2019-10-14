@@ -1,5 +1,4 @@
 const express = require('express');
-const morgan = require('morgan');
 const dotenv = require('dotenv');
 
 //Load config
@@ -7,12 +6,8 @@ dotenv.config({ path: './config.env' });
 
 const app = express();
 
-//Dev logs
-if(process.env.NODE_ENV === 'development'){
-    app.use(morgan('dev'));
-}
-
 //Profile routes
+//app.use - промежуточный обработчик
 app.use('/api/v1/profile', require('./routes/profile'))
 
 //Handle production
